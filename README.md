@@ -20,3 +20,6 @@ The calculator should take a pair of numbers at one time and return the result. 
 - DOM manipulation
 - Eventlisteners
 - Arrays/Objects to store data
+
+
+Calculator icon by https://www.stockio.com/ 
