@@ -41,7 +41,9 @@ body {
     gap: 4px;
 }
 
-.number {
+.number,
+.clear,
+.equals {
     width: 30%;
 }
 
