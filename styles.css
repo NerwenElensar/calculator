@@ -25,6 +25,9 @@ body {
     width: 90%;
     height: 20%;
     background-color: grey;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
 }
 
 .btn-container {
@@ -58,4 +61,8 @@ body {
     flex: 1;
 }
 
+.display {
+    padding: 16px;
+    font-size: 1.5rem;
+}
 
