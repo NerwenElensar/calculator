@@ -20,34 +20,32 @@ operatorButtons.forEach((button) => {
 
 const equalsButton = document.querySelector(".equals");
 const clearButton = document.querySelector(".clear");
-equalsButton.addEventListener("click", equalsHandler);
 
+equalsButton.addEventListener("click", equalsHandler);
 clearButton.addEventListener("click", clearHandler);
 
 // Callback functions for eventlisteners
 function numberHandler(event) {
-  if (!expression["operator"] && !isNaN(event.target.textContent)) {
-    expression["firstOperand"] += event.target.textContent;
-    display.textContent = expression["firstOperand"];
-  } else if (expression["firstOperand"]) {
+  if (expression["firstOperand"] && expression["operator"]) {
     expression["secondOperand"] += event.target.textContent;
-    display.textContent = expression["secondOperand"];
+    showValueOnDisplay("secondOperand");
+  } else {
+    expression["firstOperand"] += event.target.textContent;
+    showValueOnDisplay("firstOperand");
   }
 }
 
 function operatorHandler(event) {
-  if (expression["firstOperand"] && !expression["secondOperand"]) {
-    expression["operator"] = event.target.textContent;
-  } else if (expression["secondOperand"]) {
+  if (expression["secondOperand"]) {
     operateAndSetResult();
-    expression["operator"] = event.target.textContent;
   }
+  expression["operator"] = event.target.textContent;
 }
 
 function equalsHandler(event) {
   if (isOperationPossible()) {
     operateAndSetResult();
-    expression["operator"] = "";
+    reset("operator");
   }
 }
 
@@ -96,16 +94,14 @@ function isInfinity(result) {
 }
 
 function resetCalculator() {
-  expression["firstOperand"] = "";
-  expression["secondOperand"] = "";
-  expression["operator"] = "";
+  reset("firstOperand");
+  reset("secondOperand");
+  reset("operator");
 }
 
 function operateAndSetResult() {
   let firstNum = Number(expression["firstOperand"]);
   let secondNum = Number(expression["secondOperand"]);
-  console.log(firstNum);
-  console.log(secondNum);
   // Use Number, so it shows a whole number, when the decimals are 0's
   let result = operate(expression["operator"], firstNum, secondNum);
   if (isInfinity(result)) {
@@ -113,7 +109,15 @@ function operateAndSetResult() {
     resetCalculator();
   } else {
     expression["firstOperand"] = Number(result.toPrecision(10)).toString();
-    expression["secondOperand"] = "";
-    display.textContent = expression["firstOperand"];
+    reset("secondOperand");
+    showValueOnDisplay("firstOperand");
   }
+}
+
+function showValueOnDisplay(value) {
+  display.textContent = expression[value];
+}
+
+function reset(value) {
+  expression[value] = "";
 }
