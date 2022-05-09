@@ -22,4 +22,11 @@ The calculator should take a pair of numbers at one time and return the result. 
 - Arrays/Objects to store data
 
 
+### Future improvements
+- Make calculations with floating point numbers possible
+- Add keyboard support
+- Style buttons
+- Add a "delete/backspace" button
+
+
 Calculator icon by https://www.stockio.com/ 
