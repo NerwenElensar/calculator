@@ -115,7 +115,11 @@ function operateAndSetResult() {
 }
 
 function showValueOnDisplay(value) {
-  display.textContent = expression[value];
+  let stringValue = expression[value];
+  if (stringValue.length > 20) {
+    stringValue = stringValue.slice(0, 20);
+  }
+  display.textContent = stringValue;
 }
 
 function reset(value) {
