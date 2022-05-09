@@ -104,7 +104,7 @@ function operateAndSetResult() {
   let secondNum = Number(expression["secondOperand"]);
   // Use Number, so it shows a whole number, when the decimals are 0's
   let result = operate(expression["operator"], firstNum, secondNum);
-  if (isInfinity(result)) {
+  if (secondNum === 0 && isInfinity(result)) {
     display.textContent = "Can't divide by 0. Press Clear...";
     resetCalculator();
   } else {
