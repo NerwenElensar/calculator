@@ -19,7 +19,18 @@ The calculator should take a pair of numbers at one time and return the result. 
 
 - DOM manipulation
 - Eventlisteners
-- Arrays/Objects to store data
+- Objects to store data
+- Working with Logical Operators
+- Refactoring into helper functions to make the code more readable(DRY)
+
+#### Other 
+- Planning out an algorithm beforehand answering the following questions among others:
+  - Which values should be stored and how? 
+  - When does the calculator actually calculate a result?
+  - What happens when the user presses the equals button, before having a second operand?
+  - What happens when the user divides by zero?
+  - ....
+
 
 
 ### Future improvements
