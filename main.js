@@ -5,6 +5,7 @@ const expression = {
   firstOperand: "",
   secondOperand: "",
   operator: "",
+  result: "",
 };
 
 //Eventlisteners
@@ -26,20 +27,25 @@ clearButton.addEventListener("click", clearHandler);
 
 // Callback functions for eventlisteners
 function numberHandler(event) {
+  let input = event.target.textContent;
   if (expression["firstOperand"] && expression["operator"]) {
-    expression["secondOperand"] += event.target.textContent;
+    setExpressionValue("secondOperand", input, true);
     showValueOnDisplay("secondOperand");
+  } else if (expression["result"]) {
+    setExpressionValue("firstOperand", input);
+    showValueOnDisplay("firstOperand");
+    reset("result");
   } else {
-    expression["firstOperand"] += event.target.textContent;
+    setExpressionValue("firstOperand", input, true);
     showValueOnDisplay("firstOperand");
   }
 }
 
 function operatorHandler(event) {
-  if (expression["secondOperand"]) {
+  if (isOperationPossible()) {
     operateAndSetResult();
   }
-  expression["operator"] = event.target.textContent;
+  setExpressionValue("operator", event.target.textContent);
 }
 
 function equalsHandler(event) {
@@ -108,9 +114,11 @@ function operateAndSetResult() {
     display.textContent = "Can't divide by 0. Press Clear...";
     resetCalculator();
   } else {
-    expression["firstOperand"] = Number(result.toPrecision(10)).toString();
+    let processedResult = Number(result.toPrecision(10)).toString();
+    setExpressionValue("firstOperand", processedResult);
+    setExpressionValue("result", processedResult);
     reset("secondOperand");
-    showValueOnDisplay("firstOperand");
+    showValueOnDisplay("result");
   }
 }
 
@@ -124,4 +132,8 @@ function showValueOnDisplay(value) {
 
 function reset(value) {
   expression[value] = "";
+}
+
+function setExpressionValue(key, value, add = false) {
+  !add ? (expression[key] = value) : (expression[key] += value);
 }
