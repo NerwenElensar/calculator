@@ -1,0 +1,27 @@
+.calculator {
+	background-color: blanchedalmond;
+	height: 400px;
+	width: 300px;
+	padding: 16px;
+}
+
+.display {
+	background-color: burlywood;
+	height: 64px;
+	margin-bottom: 16px;
+}
+
+.button-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	height: 312px;
+}
+
+.number, .equal, .operator {
+	flex: 1 1 56px;
+}	
+
+.grow-triple {
+	flex: 3 0 181px;
+}
