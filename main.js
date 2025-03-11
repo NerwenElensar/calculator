@@ -50,7 +50,6 @@ equalsButton.addEventListener("click", (e) => {
     secondOperand = "";
     operator = e.target.textContent;
     checkForZeroDivisionAndAlert(firstOperand);
-    //usedEqualsBefore = true;
     // set result as firstOperand in case a second operation will happen
     // reset secondOperand (and operator???? clean state? easier to handle depends on other logic)
   }
@@ -82,7 +81,6 @@ function showInDisplay(number) {
     usedEqualsBefore()
   ) {
     if (usedEqualsBefore()) {
-      //usedEqualsBefore = false;
       operator = "";
     }
     displayUI.textContent = "";
